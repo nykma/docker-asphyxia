@@ -18,3 +18,11 @@ $ cp config.sample.ini config/config.ini
 $ emacs config/config.ini
 $ docker-compose up -d
 ```
+
+## Customize plugins
+
+```sh
+$ mkdir plugins
+$ cp -r your-plugin-dir ./plugins
+$ docker-compose up -d
+```

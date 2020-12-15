@@ -21,14 +21,15 @@ RUN apt-get update && apt-get install -y wget unzip && \
         unzip ${PLUGIN_VERSION}.zip && \
         mv plugins-${PLUGIN_VERSION}/* ./ && \
         rm -r *.zip plugins-${PLUGIN_VERSION} && \
+        mv /app/plugins /app/plugins_sample && \
         apt-get remove -y wget unzip && \
         apt-get clean autoclean && \
         apt-get autoremove --yes && \
         rm -rf /var/lib/apt/lists/* && \
-        mkdir /app/save /app/config && chmod a+x /app/start.sh
+        mkdir /app/save /app/config /app/plugins && chmod a+x /app/start.sh
 
 EXPOSE 8083 5700
 
-VOLUME ["/app/save", "/app/config"]
+VOLUME ["/app/save", "/app/config", "/app/plugins"]
 
 CMD ["/app/start.sh"]
